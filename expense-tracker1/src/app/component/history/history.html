@@ -1,0 +1,32 @@
+<div class="history-container">
+
+    <h2>Transaction History</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Transaction Name</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for(item of transactionService.transactions(); track $index){
+            <tr>
+                <td>{{item.name}}</td>
+                @if(item.type=='income'){
+                    <td class="income">+{{item.amount}}</td>
+                }@if(item.type=='expense'){
+                    <td class="expense">-{{item.amount}}</td>
+                }
+                
+                <td>{{item.date}}</td>
+                <td><button class="delete-btn" (click)="transactionService.deleteTransaction($index)">Delete</button></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

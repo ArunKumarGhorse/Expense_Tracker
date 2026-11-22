@@ -1,0 +1,132 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.auth-container {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px 16px;
+  background:
+    radial-gradient(ellipse at 10% 12%, rgb(32 180 134 / 9%), transparent 32%),
+    #f5f8f7;
+}
+
+.auth-card {
+  width: min(100%, 410px);
+  padding: clamp(24px, 6vw, 38px);
+  border: 1px solid #e4ece9;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 18px 55px rgb(6 36 39 / 8%);
+}
+
+.auth-card > h2 {
+  margin: 0 0 28px;
+  color: #062427;
+  font-size: 23px;
+  letter-spacing: -0.05em;
+  text-align: center;
+}
+
+.auth-card h2 span {
+  color: #16866e;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  margin-bottom: 27px;
+  padding: 4px;
+  border-radius: 10px;
+  background: #f1f5f4;
+}
+
+.auth-tabs button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #75827f;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.auth-tabs button.active {
+  background: #fff;
+  color: #087c67;
+  box-shadow: 0 2px 6px rgb(20 49 44 / 8%);
+}
+
+.auth-card h3 {
+  margin: 0 0 19px;
+  color: #183330;
+  font-size: 21px;
+  letter-spacing: -0.03em;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-card input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 13px;
+  border: 1px solid #dce5e3;
+  border-radius: 9px;
+  outline: none;
+  background: #fff;
+  color: #203936;
+  font-size: 14px;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.auth-card input::placeholder {
+  color: #a4afad;
+}
+
+.auth-card input:focus {
+  border-color: #16866e;
+  box-shadow: 0 0 0 3px rgb(22 134 110 / 12%);
+}
+
+.submit-btn {
+  min-height: 47px;
+  margin-top: 5px;
+  border: 0;
+  border-radius: 9px;
+  background: #087c67;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background-color 150ms ease;
+}
+
+.submit-btn:hover {
+  background: #066955;
+}
+
+.switch-copy {
+  margin: 22px 0 0;
+  color: #7d8a88;
+  font-size: 13px;
+  text-align: center;
+}
+
+.switch-button {
+  padding: 0 0 0 3px;
+  border: 0;
+  background: transparent;
+  color: #087c67;
+  font-size: inherit;
+  font-weight: 700;
+}
+
+.switch-button:hover {
+  text-decoration: underline;
+}

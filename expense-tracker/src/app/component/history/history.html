@@ -1,0 +1,58 @@
+<section class="history-page">
+  <header class="page-heading">
+    <div>
+      <p class="eyebrow">YOUR ACTIVITY</p>
+      <h1>Transaction history</h1>
+      <p class="heading-copy">Review and manage your recorded transactions.</p>
+    </div>
+  </header>
+
+  <section class="history-card" aria-label="All transactions">
+    @if (transactionService.transactions().length) {
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Transaction</th>
+              <th scope="col">Type</th>
+              <th scope="col">Date</th>
+              <th class="amount-column" scope="col">Amount</th>
+              <th class="action-column" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of transactionService.transactions(); track $index) {
+              <tr>
+                <td class="transaction-name">{{ item.name }}</td>
+                <td>
+                  <span class="type-badge" [class.income-badge]="item.type === 'income'" [class.expense-badge]="item.type === 'expense'">
+                    {{ item.type === 'income' ? 'Income' : 'Expense' }}
+                  </span>
+                </td>
+                <td class="date-cell">{{ item.date }}</td>
+                <td class="amount-column" [class.income-amount]="item.type === 'income'" [class.expense-amount]="item.type === 'expense'">
+                  {{ item.type === 'income' ? '+' : '−' }}{{ item.amount | currency:'INR':'symbol':'1.0-2' }}
+                </td>
+                <td class="action-column">
+                  <button
+                    class="delete-button"
+                    type="button"
+                    [attr.aria-label]="'Delete ' + item.name"
+                    (click)="transactionService.deleteTransaction($index)">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    } @else {
+      <div class="empty-state">
+        <span class="empty-icon" aria-hidden="true">◷</span>
+        <h2>No transactions to show</h2>
+        <p>Your income and expenses will appear here after you add them.</p>
+      </div>
+    }
+  </section>
+</section>

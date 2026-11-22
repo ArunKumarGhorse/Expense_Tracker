@@ -1,0 +1,33 @@
+<div class="dashboard-shell">
+  <aside class="sidebar">
+    <a class="brand" routerLink="/dashboard" aria-label="ExpenseApp dashboard home">
+      <span class="brand-mark" aria-hidden="true">E</span>
+      <span>Expense<span class="brand-accent">App</span></span>
+    </a>
+
+    <p class="nav-label">WORKSPACE</p>
+    <nav class="navigation" aria-label="Dashboard navigation">
+      <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <span class="nav-icon" aria-hidden="true">▦</span>
+        <span>Dashboard</span>
+      </a>
+      <a routerLink="/transaction" routerLinkActive="active">
+        <span class="nav-icon" aria-hidden="true">＋</span>
+        <span>Add transaction</span>
+      </a>
+      <a routerLink="/history" routerLinkActive="active">
+        <span class="nav-icon" aria-hidden="true">◷</span>
+        <span>History</span>
+      </a>
+    </nav>
+
+    <button class="logout-button" type="button" (click)="logout()">
+      <span class="nav-icon" aria-hidden="true">↪</span>
+      <span>Logout</span>
+    </button>
+  </aside>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,183 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.dashboard-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex: 0 0 244px;
+  flex-direction: column;
+  width: 244px;
+  height: 100vh;
+  padding: 28px 18px;
+  background: #062427;
+  color: #fff;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 10px 28px;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 11px;
+  background: #20b486;
+  color: #062427;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.brand-accent {
+  color: #62d6af;
+}
+
+.nav-label {
+  margin: 10px 10px 12px;
+  color: #89a6a4;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.logout-button {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  gap: 13px;
+  margin-top: auto;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #bdd0cd;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 550;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.logout-button:hover {
+  background: rgb(255 255 255 / 8%);
+  color: #fff;
+}
+
+.navigation a {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  gap: 13px;
+  padding: 0 12px;
+  border-radius: 10px;
+  color: #bdd0cd;
+  font-size: 14px;
+  font-weight: 550;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.navigation a:hover {
+  background: rgb(255 255 255 / 8%);
+  color: #fff;
+}
+
+.navigation a.active {
+  background: #12443f;
+  color: #77e0bd;
+}
+
+.nav-icon {
+  display: inline-grid;
+  width: 22px;
+  place-items: center;
+  font-size: 19px;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 38px clamp(20px, 4vw, 56px);
+}
+
+@media (max-width: 700px) {
+  .dashboard-shell {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex-basis: auto;
+    padding: 14px 16px;
+  }
+
+  .brand {
+    padding: 0 4px 14px;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .navigation {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .navigation a {
+    min-height: 42px;
+    flex: 1;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  .nav-icon {
+    width: auto;
+  }
+
+  .logout-button {
+    min-height: 42px;
+    justify-content: center;
+    margin-top: 6px;
+  }
+
+  .main-content {
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 390px) {
+  .navigation a {
+    flex-direction: column;
+    gap: 2px;
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,94 @@
+<section class="transaction-page">
+  <header class="page-heading">
+    <div>
+      <p class="eyebrow">TRANSACTIONS</p>
+      <h1>Add a transaction</h1>
+      <p class="heading-copy">Record money coming in or going out.</p>
+    </div>
+  </header>
+
+  <div class="form-container">
+    <form #transactionForm="ngForm" (ngSubmit)="addTransaction()">
+      <div class="form-intro">
+        <h2>Transaction details</h2>
+        <p>Fill in the details below to update your balance.</p>
+      </div>
+
+      <fieldset class="type-field">
+        <legend>Transaction type</legend>
+        <div class="type-button">
+          <button
+            type="button"
+            [class.selected]="value === 'income'"
+            [attr.aria-pressed]="value === 'income'"
+            (click)="addIncome()">
+            <span aria-hidden="true">↗</span> Income
+          </button>
+          <button
+            type="button"
+            [class.selected]="value === 'expense'"
+            [attr.aria-pressed]="value === 'expense'"
+            (click)="addExpense()">
+            <span aria-hidden="true">↘</span> Expense
+          </button>
+        </div>
+      </fieldset>
+
+      @if (value === 'expense') {
+        <div class="form-field">
+          <label for="expense-name">Expense name</label>
+          <input
+            id="expense-name"
+            type="text"
+            name="expenseName"
+            [(ngModel)]="expenseName"
+            #expense="ngModel"
+            required
+            minlength="2"
+            placeholder="e.g. Groceries, transport">
+          @if (expense.invalid && (expense.touched || transactionForm.submitted)) {
+            <small class="field-error">Enter a name with at least 2 characters.</small>
+          }
+        </div>
+      }
+
+      <div class="form-field">
+        <label for="amount">Amount</label>
+        <div class="amount-input">
+          <span aria-hidden="true">₹</span>
+          <input
+            id="amount"
+            type="number"
+            name="amount"
+            [(ngModel)]="amount"
+            #amt="ngModel"
+            placeholder="0.00"
+            required
+            min="0.01"
+            step="0.01">
+        </div>
+        @if (amt.invalid && (amt.touched || transactionForm.submitted)) {
+          <small class="field-error">Enter an amount greater than zero.</small>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="date">Date</label>
+        <input id="date" type="date" name="date" [(ngModel)]="date" #dateField="ngModel" required>
+        @if (dateField.invalid && (dateField.touched || transactionForm.submitted)) {
+          <small class="field-error">Choose a transaction date.</small>
+        }
+      </div>
+
+      <button class="submit-button" type="submit" [disabled]="transactionForm.invalid">
+        Save transaction
+      </button>
+
+      @if (successMessage) {
+        <p class="form-message" [class.error-message]="messageType === 'error'" [class.success-message]="messageType === 'success'" role="status">
+          {{ successMessage }}
+        </p>
+      }
+    </form>
+  </div>
+</section>

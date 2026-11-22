@@ -1,0 +1,176 @@
+:host {
+  display: block;
+}
+
+.history-page {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+}
+
+.page-heading {
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #16866e;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+}
+
+.page-heading h1 {
+  margin: 0;
+  color: #102b2a;
+  font-size: clamp(26px, 3vw, 34px);
+  letter-spacing: -0.045em;
+}
+
+.heading-copy {
+  margin: 7px 0 0;
+  color: #72817f;
+  font-size: 14px;
+}
+
+.history-card {
+  overflow: hidden;
+  border: 1px solid #e6eceb;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgb(22 45 43 / 4%);
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #edf1f0;
+  white-space: nowrap;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+th {
+  background: #f9fbfa;
+  color: #83908e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+td {
+  color: #465754;
+  font-size: 13px;
+}
+
+.transaction-name {
+  color: #213936;
+  font-weight: 620;
+}
+
+.date-cell {
+  color: #7d8a88;
+}
+
+.type-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.income-badge {
+  background: #e8f7ef;
+  color: #148253;
+}
+
+.expense-badge {
+  background: #fff0ee;
+  color: #c94d43;
+}
+
+.income-amount {
+  color: #138253;
+  font-weight: 650;
+}
+
+.expense-amount {
+  color: #cf5148;
+  font-weight: 650;
+}
+
+.amount-column,
+.action-column {
+  text-align: right;
+}
+
+.delete-button {
+  min-height: 34px;
+  padding: 0 11px;
+  border: 1px solid #f3d9d6;
+  border-radius: 7px;
+  background: #fff5f4;
+  color: #c94d43;
+  font-size: 11px;
+  font-weight: 650;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.delete-button:hover {
+  background: #c94d43;
+  color: #fff;
+}
+
+.empty-state {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  text-align: center;
+}
+
+.empty-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 14px;
+  background: #e8f5f1;
+  color: #087c67;
+  font-size: 22px;
+}
+
+.empty-state h2 {
+  margin: 14px 0 5px;
+  color: #203936;
+  font-size: 16px;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #7d8a88;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  th,
+  td {
+    padding: 13px 15px;
+  }
+}

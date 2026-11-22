@@ -1,0 +1,90 @@
+<section class="dashboard-page">
+  <header class="page-heading">
+    <div>
+      <p class="eyebrow">OVERVIEW</p>
+      <h1>Welcome back</h1>
+      <p class="heading-copy">Here’s a clear view of your finances.</p>
+    </div>
+    <a class="primary-button" routerLink="/transaction">
+      <span aria-hidden="true">＋</span>
+      Add transaction
+    </a>
+  </header>
+
+  <section class="summary-grid" aria-label="Financial summary">
+    <article class="summary-card balance-card">
+      <div class="card-label">
+        <span>Total balance</span>
+        <span class="summary-icon balance-icon" aria-hidden="true">₹</span>
+      </div>
+      <p class="summary-value">{{ transactionService.totalBalance() | currency:'INR':'symbol':'1.0-2' }}</p>
+      <p class="summary-note">Income minus expenses</p>
+    </article>
+
+    <article class="summary-card income-card">
+      <div class="card-label">
+        <span>Total income</span>
+        <span class="summary-icon income-icon" aria-hidden="true">↗</span>
+      </div>
+      <p class="summary-value">{{ transactionService.totalIncome() | currency:'INR':'symbol':'1.0-2' }}</p>
+      <p class="summary-note">All recorded income</p>
+    </article>
+
+    <article class="summary-card expense-card">
+      <div class="card-label">
+        <span>Total expenses</span>
+        <span class="summary-icon expense-icon" aria-hidden="true">↘</span>
+      </div>
+      <p class="summary-value">{{ transactionService.totalExpense() | currency:'INR':'symbol':'1.0-2' }}</p>
+      <p class="summary-note">All recorded expenses</p>
+    </article>
+  </section>
+
+  <section class="transactions-card">
+    <header class="section-heading">
+      <div>
+        <h2>Recent transactions</h2>
+        <p>Your latest financial activity</p>
+      </div>
+      <a class="text-link" routerLink="/history">View history</a>
+    </header>
+
+    @if (recentTransactions().length) {
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Transaction</th>
+              <th scope="col">Type</th>
+              <th scope="col">Date</th>
+              <th class="amount-column" scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of recentTransactions(); track $index) {
+              <tr>
+                <td class="transaction-name">{{ item.name }}</td>
+                <td>
+                  <span class="type-badge" [class.income-badge]="item.type === 'income'" [class.expense-badge]="item.type === 'expense'">
+                    {{ item.type === 'income' ? 'Income' : 'Expense' }}
+                  </span>
+                </td>
+                <td class="date-cell">{{ item.date }}</td>
+                <td class="amount-column" [class.income-amount]="item.type === 'income'" [class.expense-amount]="item.type === 'expense'">
+                  {{ item.type === 'income' ? '+' : '−' }}{{ item.amount | currency:'INR':'symbol':'1.0-2' }}
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    } @else {
+      <div class="empty-state">
+        <span class="empty-icon" aria-hidden="true">₹</span>
+        <h3>No transactions yet</h3>
+        <p>Add your first income or expense to see your activity here.</p>
+        <a class="primary-button" routerLink="/transaction">Add your first transaction</a>
+      </div>
+    }
+  </section>
+</section>

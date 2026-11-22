@@ -1,0 +1,47 @@
+<div class="Main">
+    <h1>Dashboard</h1>
+    <h3>Hello {{userName}}</h3>
+    <div class="report">
+        <h3>Total Balance: ₹{{transactionService.totalBalance()}}</h3>
+        <h3>Total Income:  ₹{{ transactionService.totalIncome() }}</h3>
+        <h3>Total Expense:₹{{ transactionService.totalExpense() }}</h3>
+    </div>
+
+    <div>
+        <div class="transaction">
+            <h2>Recent Transaction</h2>
+            <button style="background-color:  #16a34a;" routerLink="/transaction">Add Transaction</button>
+        </div>
+        <div class="table-container">
+             <table class="table">
+            <tr>
+                <th>Transaction name</th>
+                <th>Date</th>
+                <th>Expense Amount</th>
+            </tr>
+
+            @for (item of transactionService.transactions(); track $index) {
+            <tr>
+                @if(item.type=='income'){
+                    <td class="income">{{ item.name }}</td>
+                }@else if(item.type=="expense"){
+                    <td class="expense">{{ item.name }}</td>
+                }
+                
+                <td>{{ item.date }}</td>
+
+                @if(item.type=='income'){
+                    <td class="income">+{{ item.amount }}</td>
+                }@if(item.type=='expense'){
+                    <td class="expense">-{{ item.amount }}</td>
+                }
+                
+            </tr>
+            }
+        </table>
+        </div>
+
+       
+
+    </div>
+</div>

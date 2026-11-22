@@ -1,0 +1,68 @@
+
+<div class="auth-container">
+
+  <div class="auth-card">
+
+    <h2>Expense<span>Track</span></h2>
+
+    <div class="auth-tabs">
+      <button
+        type="button"
+        [class.active]="isLogin"
+        (click)="isLogin = true">
+        Login
+      </button>
+
+      <button
+        type="button"
+        [class.active]="!isLogin"
+        (click)="isLogin = false">
+        Signup
+      </button>
+    </div>
+
+    <h3>{{ isLogin ? 'Welcome Back!' : 'Create Account' }}</h3>
+
+    <form (ngSubmit)="submitForm()">
+
+      <input
+        *ngIf="!isLogin"
+        type="text"
+        placeholder="Full Name"
+        [(ngModel)]="name"
+        name="name"
+        required
+      >
+
+      <input
+        type="email"
+        placeholder="Email Address"
+        [(ngModel)]="email"
+        name="email"
+        required
+      >
+
+      <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      >
+
+      <button type="submit" class="submit-btn">
+        {{ isLogin ? 'Login' : 'Create Account' }}
+      </button>
+
+    </form>
+
+    <p class="switch-copy">
+      {{ isLogin ? "Don't have an account?" : "Already have an account?" }}
+      <button type="button" class="switch-button" (click)="isLogin = !isLogin">
+        {{ isLogin ? 'Signup' : 'Login' }}
+      </button>
+    </p>
+
+  </div>
+
+</div>
